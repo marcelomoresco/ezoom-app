@@ -13,6 +13,12 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   @override
+  void initState() {
+    Modular.setInitialRoute("/login");
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Ezoom Todolist',

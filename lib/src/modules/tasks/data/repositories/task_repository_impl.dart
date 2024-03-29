@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:ezoom_todolist/src/core/services/client/client_service.dart';
+import 'package:ezoom_todolist/src/core/services/client/dtos/client_request.dart';
+import 'package:ezoom_todolist/src/modules/tasks/consts/task_endpoints.dart';
 import 'package:ezoom_todolist/src/modules/tasks/domain/repositories/task_repository.dart';
 import 'package:ezoom_todolist/src/modules/tasks/domain/entities/task.dart';
 
@@ -11,32 +13,53 @@ class TaskRepositoryImpl implements TaskRepository {
   });
 
   @override
-  Future<void> createTask(Task task) {
-    // TODO: implement createTask
-    throw UnimplementedError();
+  Future<void> createTask(Task task) async {
+    await clientService.post(
+      ClientRequest(
+        path: TaskEndpoints.get,
+        data: task.toJson(),
+      ),
+    );
   }
 
   @override
-  Future<List<Task>> findAll() {
-    // TODO: implement findAll
-    throw UnimplementedError();
+  Future<List<Task>> findAll() async {
+    final response = await clientService.post(
+      const ClientRequest(
+        path: TaskEndpoints.get,
+      ),
+    );
+    final result = response.body as List;
+    return result.map((e) => Task.fromJson(e)).toList();
   }
 
   @override
-  Future<Task> findById(String id) {
-    // TODO: implement findById
-    throw UnimplementedError();
+  Future<Task> findById(String id) async {
+    final response = await clientService.post(
+      ClientRequest(
+        path: TaskEndpoints.findById(id),
+      ),
+    );
+
+    return Task.fromJson(response.body);
   }
 
   @override
-  Future<void> updateTask(Task task) {
-    // TODO: implement updateTask
-    throw UnimplementedError();
+  Future<void> updateTask(Task task) async {
+    await clientService.put(
+      ClientRequest(
+        path: TaskEndpoints.findById(task.id!),
+        data: task.toJson(),
+      ),
+    );
   }
 
   @override
-  Future<void> deleteTask(String id) {
-    // TODO: implement deleteTask
-    throw UnimplementedError();
+  Future<void> deleteTask(String id) async {
+    await clientService.post(
+      ClientRequest(
+        path: TaskEndpoints.delete(id),
+      ),
+    );
   }
 }

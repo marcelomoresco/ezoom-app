@@ -51,7 +51,11 @@ class EzoomTextField extends StatelessWidget {
       onSaved: onSaved,
       obscureText: obscureText,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: context.colors.secodary!,
+          ),
+        ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: context.colors.danger!,
@@ -60,7 +64,15 @@ class EzoomTextField extends StatelessWidget {
         errorStyle: TextStyle(
           color: context.colors.danger,
         ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: context.colors.secodary!,
+          ),
+        ),
         labelText: labelText,
+        labelStyle: TextStyle(
+          color: context.colors.secodary,
+        ),
         prefixIcon: getPrefixIcon(),
         suffixIcon: getSuffixIcon(),
       ),

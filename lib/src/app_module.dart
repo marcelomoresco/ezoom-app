@@ -2,7 +2,9 @@ import 'package:ezoom_todolist/src/core/services/client/client_service.dart';
 import 'package:ezoom_todolist/src/core/services/client/dio/custom_dio.dart';
 import 'package:ezoom_todolist/src/core/services/client/dio/dio_client_service_impl.dart';
 import 'package:ezoom_todolist/src/modules/auth/data/repository/user_repository_impl.dart';
+import 'package:ezoom_todolist/src/modules/auth/data/usecases/auth_usecase.dart';
 import 'package:ezoom_todolist/src/modules/auth/domain/repositories/user_repository.dart';
+import 'package:ezoom_todolist/src/modules/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/page/login_page.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/page/register_page.dart';
 import 'package:ezoom_todolist/src/modules/tasks/tasks_module.dart';
@@ -26,6 +28,13 @@ class AppModule extends Module {
         Bind.lazySingleton<UserRepository>(
           (i) => UserRepositoryImpl(
             clientService: i.get(),
+          ),
+        ),
+        Bind.lazySingleton<LoginCubit>(
+          (i) => LoginCubit(
+            authUsecase: AuthUsecase(
+              userRepository: i.get(),
+            ),
           ),
         ),
       ];

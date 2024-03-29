@@ -1,8 +1,10 @@
 import 'package:ezoom_todolist/src/core/services/client/client_service.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/repositories/task_repository_impl.dart';
+import 'package:ezoom_todolist/src/modules/tasks/data/usecases/create_task_usecase.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/delete_task_usecase.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/get_task_usecase.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/get_tasks_usecase.dart';
+import 'package:ezoom_todolist/src/modules/tasks/data/usecases/update_task_usecase.dart';
 import 'package:ezoom_todolist/src/modules/tasks/domain/repositories/task_repository.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/cubits/task/tasks_cubit.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/page/tasks_page.dart';
@@ -25,6 +27,12 @@ class TasksModule extends Module {
               taskRepository: i.get<TaskRepository>(),
             ),
             deleteTaskUsecase: DeleteTaskUsecase(
+              taskRepository: i.get<TaskRepository>(),
+            ),
+            createTaskUsecase: CreateTaskUsecase(
+              taskRepository: i.get<TaskRepository>(),
+            ),
+            updateTaskUsecase: UpdateTaskUsecase(
               taskRepository: i.get<TaskRepository>(),
             ),
           ),

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
+import 'package:ezoom_todolist/src/modules/tasks/data/usecases/create_task_usecase.dart';
+import 'package:ezoom_todolist/src/modules/tasks/data/usecases/update_task_usecase.dart';
 import 'package:meta/meta.dart';
 
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/delete_task_usecase.dart';
@@ -13,16 +15,24 @@ class TasksCubit extends Cubit<TasksState> {
   final GetTaskUsecase getTaskUsecase;
   final GetTasksUsecase getTasksUsecase;
   final DeleteTaskUsecase deleteTaskUsecase;
+  final CreateTaskUsecase createTaskUsecase;
+  final UpdateTaskUsecase updateTaskUsecase;
 
   TasksCubit({
     required this.getTaskUsecase,
     required this.getTasksUsecase,
     required this.deleteTaskUsecase,
+    required this.createTaskUsecase,
+    required this.updateTaskUsecase,
   }) : super(TasksInitial());
 
   void initial() async {
-    emit(TasksLoading());
-    final tasks = await getTasksUsecase();
-    emit(TasksSucess(tasks));
+    try {
+      emit(TasksLoading());
+      final tasks = await getTasksUsecase();
+      emit(TasksSucess(tasks));
+    } catch (e) {
+      emit(TasksError(e.toString()));
+    }
   }
 }

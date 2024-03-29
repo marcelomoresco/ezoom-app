@@ -25,7 +25,7 @@ class EzoomButton extends StatelessWidget {
       ),
       minWidth: 353,
       height: 50,
-      color: backgroundColor ?? iColors.primary,
+      color: backgroundColor ?? iColors.secodary,
       disabledColor: iColors.backgroundSecondary,
       onPressed: onPressed,
       child: Text(
