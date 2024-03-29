@@ -1,6 +1,10 @@
 import 'package:ezoom_todolist/src/core/services/client/client_service.dart';
 import 'package:ezoom_todolist/src/core/services/client/dio/custom_dio.dart';
 import 'package:ezoom_todolist/src/core/services/client/dio/dio_client_service_impl.dart';
+import 'package:ezoom_todolist/src/modules/auth/data/repository/user_repository_impl.dart';
+import 'package:ezoom_todolist/src/modules/auth/domain/repositories/user_repository.dart';
+import 'package:ezoom_todolist/src/modules/auth/presentation/page/login_page.dart';
+import 'package:ezoom_todolist/src/modules/auth/presentation/page/register_page.dart';
 import 'package:ezoom_todolist/src/modules/tasks/tasks_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -19,6 +23,11 @@ class AppModule extends Module {
             dio: i.get(),
           ),
         ),
+        Bind.lazySingleton<UserRepository>(
+          (i) => UserRepositoryImpl(
+            clientService: i.get(),
+          ),
+        ),
       ];
 
   @override
@@ -30,11 +39,13 @@ class AppModule extends Module {
         ),
         ChildRoute(
           '/login',
-          child: (context, args) => const SizedBox(),
+          child: (context, args) => const LoginPage(),
           transition: TransitionType.rightToLeftWithFade,
-          guards: [
-            //LoginGuard(),
-          ],
+        ),
+        ChildRoute(
+          '/register',
+          child: (context, args) => const RegisterPage(),
+          transition: TransitionType.rightToLeftWithFade,
         ),
       ];
 }
