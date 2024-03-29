@@ -1,4 +1,4 @@
 library design_system;
 
-export 'src/common/common.dart';
-export 'src/widgets/widgets.dart';
+export 'src/core/common.dart';
+export 'src/molecules/widgets.dart';

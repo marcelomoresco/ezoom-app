@@ -1,5 +1,5 @@
-import 'package:design_system/src/common/colors/icolor.dart';
-import 'package:design_system/src/common/extensions/context_theme_extension.dart';
+import 'package:design_system/src/core/colors/icolor.dart';
+import 'package:design_system/src/core/extensions/context_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class EzoomButton extends StatelessWidget {

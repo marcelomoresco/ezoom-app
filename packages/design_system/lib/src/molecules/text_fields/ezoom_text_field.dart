@@ -1,4 +1,4 @@
-import 'package:design_system/src/common/extensions/context_theme_extension.dart';
+import 'package:design_system/src/core/extensions/context_theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
