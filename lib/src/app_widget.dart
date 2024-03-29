@@ -14,7 +14,7 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   void initState() {
-    Modular.setInitialRoute("/login");
+    Modular.setInitialRoute("/splash");
     super.initState();
   }
 
@@ -22,6 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Ezoom Todolist',
+      debugShowCheckedModeBanner: false,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
       theme: ThemeData.light(useMaterial3: false).copyWith(

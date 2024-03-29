@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const EzoomTextField(
                   labelText: "Senha",
+                  obscureText: true,
                 ),
                 const SizedBox(
                   height: 32,
@@ -56,7 +57,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 EzoomButton(
                   text: "Criar conta",
-                  onPressed: () {},
+                  onPressed: () {
+                    Modular.to.pushNamed('/register');
+                  },
                 ),
               ],
             ),
