@@ -1,4 +1,5 @@
 import 'package:design_system/design_system.dart';
+import 'package:ezoom_todolist/src/app_module.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/view/login_view.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
         bloc: Modular.get<LoginCubit>(),
         listener: (context, state) {
           if (state is LoginSucess) {
-            Modular.to.pushReplacementNamed("/tasks");
+            Modular.to.pushReplacementNamed(AppModule.tasks);
           }
         },
         builder: (context, state) {

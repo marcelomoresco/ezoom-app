@@ -14,6 +14,11 @@ import 'package:ezoom_todolist/src/modules/tasks/tasks_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
+  static const String splash = '/splash';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String tasks = '/tasks/';
+
   @override
   List<Module> get imports => [
         TasksModule(),
@@ -51,22 +56,22 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          '/splash',
+          splash,
           child: (context, args) => const SplashPage(),
           transition: TransitionType.defaultTransition,
         ),
         ChildRoute(
-          '/login',
+          login,
           child: (context, args) => const LoginPage(),
           transition: TransitionType.rightToLeftWithFade,
         ),
         ChildRoute(
-          '/register',
+          register,
           child: (context, args) => const RegisterPage(),
           transition: TransitionType.rightToLeftWithFade,
         ),
         ModuleRoute(
-          "/tasks",
+          tasks,
           module: TasksModule(),
           transition: TransitionType.defaultTransition,
         ),

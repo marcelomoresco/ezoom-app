@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:design_system/design_system.dart';
+import 'package:ezoom_todolist/src/app_module.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/cubits/task/tasks_cubit.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/view/create_edit_task_widget.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,14 @@ class TasksAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         IconButton(
-          icon: const Icon(Icons.add),
+          icon: const Icon(
+            Icons.add,
+            size: 32,
+          ),
           onPressed: () {
             showModalBottomSheet(
               context: context,
+              isScrollControlled: true,
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.sizeOf(context).height,
               ),
@@ -38,7 +43,7 @@ class TasksAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
         )
       ],
       leading: IconButton(
-        onPressed: () => Modular.to.pushReplacementNamed("/login"),
+        onPressed: () => Modular.to.pushReplacementNamed(AppModule.login),
         icon: Transform.rotate(
           angle: pi,
           child: Icon(

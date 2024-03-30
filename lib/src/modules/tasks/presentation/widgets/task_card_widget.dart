@@ -86,6 +86,10 @@ class TaskCardWidget extends StatelessWidget {
                     IconButton(
                       onPressed: () => showModalBottomSheet(
                         context: context,
+                        isScrollControlled: true,
+                        constraints: BoxConstraints(
+                          maxHeight: MediaQuery.sizeOf(context).height,
+                        ),
                         builder: (context) {
                           return CreateEditTaskWidget(
                             task: task,

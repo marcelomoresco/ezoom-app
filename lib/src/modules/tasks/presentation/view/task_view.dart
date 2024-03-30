@@ -5,7 +5,6 @@ import 'package:ezoom_todolist/src/modules/tasks/presentation/view/create_edit_t
 import 'package:ezoom_todolist/src/modules/tasks/presentation/widgets/empty_tasks_widget.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/widgets/task_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class TasksView extends StatefulWidget {
@@ -52,6 +51,7 @@ class _TasksViewState extends State<TasksView> {
               child: EmptyTaskWidget(
                 onPressed: () => showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   builder: (context) {
                     return CreateEditTaskWidget(
                       onPressed: (task) {

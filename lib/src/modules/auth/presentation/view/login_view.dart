@@ -1,4 +1,5 @@
 import 'package:design_system/design_system.dart';
+import 'package:ezoom_todolist/src/app_module.dart';
 import 'package:ezoom_todolist/src/core/mixins/validator_mixin.dart';
 import 'package:ezoom_todolist/src/modules/auth/domain/entities/user.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/cubits/login/login_cubit.dart';
@@ -86,7 +87,7 @@ class _LoginViewState extends State<LoginView> with ValidatorMixin {
               text: "Criar conta",
               onPressed: () {
                 _formKey.currentState?.reset();
-                Modular.to.pushNamed('/register');
+                Modular.to.pushNamed(AppModule.register);
               },
             ),
           ],
