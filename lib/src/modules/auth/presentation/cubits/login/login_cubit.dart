@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ezoom_todolist/src/core/widgets/ezoom_toast.dart';
 import 'package:ezoom_todolist/src/modules/auth/data/usecases/auth_usecase.dart';
 import 'package:ezoom_todolist/src/modules/auth/domain/entities/user.dart';
 
@@ -10,15 +11,13 @@ class LoginCubit extends Cubit<LoginState> {
     required this.authUsecase,
   }) : super(LoginInitial());
 
-  void login(String username, String password) async {
-    emit(LoginLoading());
+  void login(User user) async {
     try {
-      await authUsecase(
-        User(username: username, password: password),
-      );
+      emit(LoginLoading());
+      await authUsecase(user);
       emit(LoginSucess());
     } catch (e) {
-      emit(LoginError(e.toString()));
+      EzoomToast.showErrorToast("Opss...algo occoreu!");
     }
   }
 }

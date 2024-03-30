@@ -93,6 +93,7 @@ class EzoomTextField extends StatelessWidget {
     return IconButton(
       icon: Icon(
         suffixIcon,
+        color: Colors.black,
       ),
       onPressed: onPressedSuffix,
     );

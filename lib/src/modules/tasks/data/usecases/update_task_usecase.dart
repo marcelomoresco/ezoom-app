@@ -6,7 +6,7 @@ class UpdateTaskUsecase {
 
   UpdateTaskUsecase({required this.taskRepository});
 
-  Future<void> updateTask(Task task) async {
+  Future<void> call(Task task) async {
     await taskRepository.updateTask(task);
   }
 }

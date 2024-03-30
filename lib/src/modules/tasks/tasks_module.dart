@@ -42,7 +42,7 @@ class TasksModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          '',
+          '/',
           child: (context, args) {
             return const TasksPage();
           },

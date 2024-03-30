@@ -24,7 +24,7 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<List<Task>> findAll() async {
-    final response = await clientService.post(
+    final response = await clientService.get(
       const ClientRequest(
         path: TaskEndpoints.get,
       ),
@@ -35,7 +35,7 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<Task> findById(String id) async {
-    final response = await clientService.post(
+    final response = await clientService.get(
       ClientRequest(
         path: TaskEndpoints.findById(id),
       ),

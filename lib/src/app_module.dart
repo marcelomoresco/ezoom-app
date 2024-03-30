@@ -65,5 +65,10 @@ class AppModule extends Module {
           child: (context, args) => const RegisterPage(),
           transition: TransitionType.rightToLeftWithFade,
         ),
+        ModuleRoute(
+          "/tasks",
+          module: TasksModule(),
+          transition: TransitionType.defaultTransition,
+        ),
       ];
 }
