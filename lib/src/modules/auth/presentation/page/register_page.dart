@@ -1,4 +1,3 @@
-import 'package:design_system/design_system.dart';
 import 'package:ezoom_todolist/src/core/widgets/ezoom_toast.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/cubits/signup/signup_cubit.dart';
 import 'package:ezoom_todolist/src/modules/auth/presentation/view/register_view.dart';
