@@ -16,7 +16,7 @@ class TaskRepositoryImpl implements TaskRepository {
   Future<void> createTask(Task task) async {
     await clientService.post(
       ClientRequest(
-        path: TaskEndpoints.get,
+        path: TaskEndpoints.create,
         data: task.toJson(),
       ),
     );
@@ -48,7 +48,7 @@ class TaskRepositoryImpl implements TaskRepository {
   Future<void> updateTask(Task task) async {
     await clientService.put(
       ClientRequest(
-        path: TaskEndpoints.findById(task.id!),
+        path: TaskEndpoints.update(task.id!),
         data: task.toJson(),
       ),
     );

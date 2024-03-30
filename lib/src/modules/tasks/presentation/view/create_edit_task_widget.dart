@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rxdart/subjects.dart';
 
 import 'package:ezoom_todolist/src/modules/tasks/domain/entities/task.dart';
@@ -44,7 +45,7 @@ class _CreateEditTaskWidgetState extends State<CreateEditTaskWidget> {
             ),
             Center(
               child: Text(
-                'Criar tarefa',
+                widget.task != null ? "Editar tarefa" : 'Criar tarefa',
                 style: TextStyle(
                   color: context.colors.background,
                   fontWeight: FontWeight.bold,
@@ -56,6 +57,7 @@ class _CreateEditTaskWidgetState extends State<CreateEditTaskWidget> {
               height: 32,
             ),
             EzoomTextField(
+              initialValue: title.value,
               labelText: "Titíulo",
               onChanged: (value) {
                 title.add(value);
@@ -65,6 +67,7 @@ class _CreateEditTaskWidgetState extends State<CreateEditTaskWidget> {
               height: 16,
             ),
             EzoomTextField(
+              initialValue: description.value,
               labelText: "Descrição",
               onChanged: (value) {
                 description.add(value);
@@ -74,6 +77,7 @@ class _CreateEditTaskWidgetState extends State<CreateEditTaskWidget> {
               height: 16,
             ),
             EzoomCheckboxText(
+              initialValue: isDone.value,
               title: "Já foi finalizado?",
               onTap: (value) {
                 isDone.add(value);
@@ -100,6 +104,7 @@ class _CreateEditTaskWidgetState extends State<CreateEditTaskWidget> {
                                         isDone: isDone.value,
                                       ),
                                     );
+                                    Modular.to.maybePop();
                                   }
                                 : null,
                             text: labelButton,
