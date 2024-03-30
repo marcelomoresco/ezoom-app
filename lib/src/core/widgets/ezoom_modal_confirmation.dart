@@ -27,16 +27,20 @@ class EzoomModalConfirm {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 4),
-                child: Text(
-                  title,
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: context.colors.primary,
-                    fontSize: 28,
-                  ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                title,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  color: context.colors.secodary,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
+              const SizedBox(
+                height: 4,
               ),
               Text(
                 description,
@@ -44,28 +48,31 @@ class EzoomModalConfirm {
                 style:
                     TextStyle(color: context.colors.background, fontSize: 20),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 24, bottom: 16),
-                child: Column(
-                  children: [
-                    EzoomButton(
-                      onPressed: onConfirm,
-                      text: "Confirmar",
-                      backgroundColor: context.colors.sucess,
+              const SizedBox(
+                height: 24,
+              ),
+              Column(
+                children: [
+                  EzoomButton(
+                    onPressed: onConfirm,
+                    text: "Confirmar",
+                    backgroundColor: context.colors.sucess,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TextButton(
+                    onPressed: onCancel ?? () => Modular.to.maybePop(),
+                    child: Text(
+                      "Cancelar",
+                      style: TextStyle(
+                        color: context.colors.danger,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    EzoomButton(
-                      onPressed: onCancel ?? () => Modular.to.maybePop(),
-                      text: "Cancelar",
-                      backgroundColor: context.colors.danger,
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

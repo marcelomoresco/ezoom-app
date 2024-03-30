@@ -56,7 +56,7 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<void> deleteTask(String id) async {
-    await clientService.post(
+    await clientService.delete(
       ClientRequest(
         path: TaskEndpoints.delete(id),
       ),

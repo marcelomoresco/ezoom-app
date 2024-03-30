@@ -29,11 +29,14 @@ class _AppWidgetState extends State<AppWidget> {
         textTheme: GoogleFonts.ralewayTextTheme(
           ThemeData.light().textTheme,
         ),
-        bottomSheetTheme: const BottomSheetThemeData(
-          shape: RoundedRectangleBorder(
+        bottomSheetTheme: BottomSheetThemeData(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(16),
             ),
+          ),
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.sizeOf(context).height,
           ),
         ),
         extensions: [

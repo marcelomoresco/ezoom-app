@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
+import 'package:diacritic/diacritic.dart';
 import 'package:ezoom_todolist/src/core/widgets/ezoom_toast.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/create_task_usecase.dart';
 import 'package:ezoom_todolist/src/modules/tasks/data/usecases/update_task_usecase.dart';
@@ -27,10 +28,12 @@ class TasksCubit extends Cubit<TasksState> {
     required this.updateTaskUsecase,
   }) : super(TasksInitial());
 
+  late List<Task> tasks;
+
   Future<void> initial() async {
     try {
       emit(TasksLoading());
-      final tasks = await getTasksUsecase();
+      tasks = await getTasksUsecase();
       emit(TasksSucess(tasks));
     } catch (e) {
       EzoomToast.showErrorToast("Opss...algo deu errado!");
@@ -68,5 +71,18 @@ class TasksCubit extends Cubit<TasksState> {
     } catch (e) {
       EzoomToast.showErrorToast("Opss...algo deu errado!");
     }
+  }
+
+  void search(String searchText) async {
+    searchText = searchText.toLowerCase();
+    final filteredTasks = tasks.where(
+      (element) {
+        final title = removeDiacritics(element.title.toLowerCase());
+        final description = removeDiacritics(element.description.toLowerCase());
+        final search = removeDiacritics(searchText);
+        return title.contains(search) || description.contains(search);
+      },
+    ).toList();
+    emit(TasksSucess(filteredTasks));
   }
 }

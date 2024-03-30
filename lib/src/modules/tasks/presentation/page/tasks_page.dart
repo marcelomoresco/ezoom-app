@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:design_system/design_system.dart';
-import 'package:ezoom_todolist/src/core/widgets/ezoom_error_page.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/cubits/task/tasks_cubit.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/view/create_edit_task_widget.dart';
 import 'package:ezoom_todolist/src/modules/tasks/presentation/view/task_view.dart';
@@ -38,14 +37,18 @@ class _TasksPageState extends State<TasksPage> {
             icon: const Icon(Icons.add),
             onPressed: () {
               showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return CreateEditTaskWidget(
-                      onPressed: (task) {
-                        tasksCubit.create(task);
-                      },
-                    );
-                  });
+                context: context,
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height,
+                ),
+                builder: (context) {
+                  return CreateEditTaskWidget(
+                    onPressed: (task) {
+                      tasksCubit.create(task);
+                    },
+                  );
+                },
+              );
             },
           )
         ],

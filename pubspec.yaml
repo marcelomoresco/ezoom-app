@@ -18,6 +18,7 @@ dependencies:
   overlay_support: ^2.1.0
   google_fonts: ^6.0.0
   flutter_secure_storage:
+  diacritic: ^0.1.4
   rxdart:
   design_system:
     path: ./packages/design_system

@@ -24,56 +24,55 @@ class _TasksViewState extends State<TasksView> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.tasks.isEmpty) {
-      return RefreshIndicator(
-        onRefresh: () => tasksCubit.initial(),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              EmptyTaskWidget(
-                onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return CreateEditTaskWidget(
-                        onPressed: (task) {
-                          tasksCubit.create(task);
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-      );
-    }
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          const EzoomTextField(
-            labelText: "Pesquisar por...",
-            suffixIcon: Icons.search,
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Flexible(
-            child: ListView.builder(
-              itemCount: widget.tasks.length,
-              itemBuilder: (context, index) {
-                final item = widget.tasks[index];
-                return TaskCardWidget(task: item);
+      child: RefreshIndicator(
+        onRefresh: () => tasksCubit.initial(),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 16,
+            ),
+            EzoomTextField(
+              labelText: "Pesquisar por...",
+              suffixIcon: Icons.search,
+              onChanged: (value) {
+                if (value.isEmpty) {
+                  tasksCubit.initial();
+                } else {
+                  tasksCubit.search(value);
+                }
               },
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 16,
+            ),
+            Visibility(
+              visible: widget.tasks.isEmpty,
+              child: EmptyTaskWidget(
+                onPressed: () => showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return CreateEditTaskWidget(
+                      onPressed: (task) {
+                        tasksCubit.create(task);
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+            Flexible(
+              child: ListView.builder(
+                itemCount: widget.tasks.length,
+                itemBuilder: (context, index) {
+                  final item = widget.tasks[index];
+                  return TaskCardWidget(task: item);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
