@@ -30,19 +30,13 @@ A arquitetura segue a arquitetura por camadas, na qual utilizei o Flutter Modula
 
 - **Requisitos**: Flutter ">=3.3.0 <4.0.0"
 
-1. Clone o repositório
-
 ```
 git clone https://github.com/marcelomoresco/ezoom-app.git
 ```
 
-2. Resolva as dependências do projeto
-
 ```
 flutter pub get
 ```
-
-1. Execute o projeto
 
 ```
 flutter run
