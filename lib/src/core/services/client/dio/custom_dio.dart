@@ -7,7 +7,7 @@ class CustomDio extends DioForNative {
   }
 
   void _configureDio() {
-    options.baseUrl = "http://ec2-3-92-56-46.compute-1.amazonaws.com:8080";
+    options.baseUrl = "http://ec2-44-207-83-194.compute-1.amazonaws.com:8080";
     interceptors.add(HeaderInterceptor());
     options.connectTimeout = const Duration(seconds: 30);
     options.sendTimeout = const Duration(seconds: 30);
