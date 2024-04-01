@@ -13,7 +13,7 @@ Esta camada dá suporte a camada Domain implementando suas interfaces. Implement
 - UseCases:
   Use cases são responsáveis por executar uma tarefa especifica, onde contém a regra de negócio.
 
--Repositórios:
+- Repositórios:
 Responsáveis por fazer as chamadas com o banco de dados, nesse caso com a api
 
 ## Presentation
