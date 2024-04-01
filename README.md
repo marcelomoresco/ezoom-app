@@ -3,9 +3,9 @@
 Teste para a vaga de desenvolvedor mobile da Ezoom. O aplicativo foi desenvolvido em flutter, e
 segue a arquitetura limpa, respeitando os princípios de SOLID.
 
-Foi desenvolvido também a API com Autenticação básica e o CRUD das tarefas, feito com Java e Spring Boot,além disso foi feito o deploy via AWS, na aws utilizei o ec2 para subir a aplicação, além do RDS para banco de dados!
+Foi desenvolvido também a API com Autenticação básica e o CRUD das tarefas, feito com Java e Spring Boot,além disso foi feito o deploy via AWS, na aws utilizei o ec2 para subir a aplicação, além do RDS Mysql para banco de dados!
 
-## Decições técnicas
+## Decisões técnicas
 
 A arquitetura segue a arquitetura por camadas, na qual utilizei o Flutter Modular para cada feature da aplicaçao ter um modulo, e em cada modúlo temos 3 camadas, além disso no módulo de auth tem um readme detalhando.
 
