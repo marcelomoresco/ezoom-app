@@ -1,6 +1,6 @@
 # Ezoom-Teste-Mobile
 
-Teste para a vaga de desenvolvedor mobile da Ezoom. O aplicativo foi desenvolvido em flutter, e
+O aplicativo foi desenvolvido em flutter, e
 segue a arquitetura limpa, respeitando os princípios de SOLID.
 
 Foi desenvolvido também a API com Autenticação básica e o CRUD das tarefas, feito com Java e Spring Boot,além disso foi feito o deploy via AWS, na aws utilizei o ec2 para subir a aplicação, além do RDS Mysql para banco de dados!
